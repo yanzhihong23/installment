@@ -1,0 +1,28 @@
+<ion-view id="stu_auth_fail">
+	<ion-content>
+		<step name="1" desc="学籍认证" class="white-bg"></step>
+
+		<fail-alert msg="抱歉，你的学生身份认证未通过！"></fail-alert>
+
+		<div class="desc margin">
+			<div class="wrapper">
+				<div class="padding-left">请检查如下项，修改后再提交：</div>
+				<ol class="decimal">
+					<li>姓名（是否与身份证、银行卡一致）</li>
+					<li>身份证（是否错、漏写）</li>
+					<li>学校名（是否全称）</li>
+					<li>其它选项（入学年份、学号、专业、学历）</li>
+				</ol>
+			</div>
+		</div>
+
+		<div class="dbl-margin">
+			<button class="button button-block button-assertive" ng-click="back()">飞一样的去修改</button>
+		</div>
+
+		<div class="dbl-padding code-tunnel" bottom>
+			<div>屡战屡败？试试这条华山道<i class="icon ion-ios-arrow-thin-down assertive fs-lg"></i></div>
+			<button class="button button-block button-assertive" ng-click="codeAuth()">学籍码认证通道</button>
+		</div>
+	</ion-content>
+</ion-view>

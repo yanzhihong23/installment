@@ -1,0 +1,22 @@
+.id-number{
+	z-index: 5;
+	overflow: visible;
+	.display{
+		display: none;
+	}
+	input:focus+.display:not(:empty){
+		display: block;
+		position: absolute;
+		width: 100%;
+		top: 100%;
+		left: 0;
+		line-height: 55px;
+		font-size: 24px;
+		color: $assertive;
+		text-align: center;
+		border-top: solid 1px $assertive;
+		border-bottom: solid 1px $assertive;
+		background: $white;
+	}
+}
+

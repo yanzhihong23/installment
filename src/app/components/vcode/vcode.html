@@ -1,0 +1,9 @@
+<div class="send-vcode">
+	<div class="item item-input">
+		<input type="text" ng-model="vcode" placeholder="请输入验证码" required>
+	</div>
+	<button class="button button-block button-assertive no-margin fs-sm" ng-disabled="resendCountdown" ng-click="_send()">
+		<span ng-show="resendCountdown">{{resendCountdown}}秒后重新发送</span>
+		<span ng-hide="resendCountdown">发送验证码</span>
+	</button>
+</div>

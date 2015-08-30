@@ -1,0 +1,37 @@
+<ion-view>
+	<ion-content>
+		<step name="1" desc="学籍认证" class="white-bg"></step>
+
+		<form name="authForm" ng-submit="submit()">
+			<div class="margin-top">
+				<div class="item item-input">
+					<span class="input-label">姓名</span>
+					<input type="text" placeholder="请输入姓名" ng-model="user.realname" required>
+				</div>
+				<div class="item item-input">
+					<span class="input-label">身份证</span>
+					<input type="text" placeholder="请输入身份证" ng-model="user.idNo"  ng-pattern="/^[\s\S]{15,18}$/" maxlength="18" id-number required>
+				</div>
+			</div>
+
+			<div class="margin-top">
+				<div class="item item-input">
+					<span class="input-label">学校</span>
+					<input type="text" placeholder="请输入学校名称" auto-complete options="schoolList" ng-model="user.school" required>
+				</div>
+				<div class="item item-input item-arrow-down">
+					<span class="input-label">学历</span>
+					<input type="text" placeholder="请选择学历" ng-model="user.degree" ng-click="selectDegree()" readonly required>
+				</div>
+				<div class="item item-input item-arrow-down">
+					<span class="input-label">入学年份</span>
+					<input type="text" placeholder="请选择入学年份" ng-model="user.year" ng-click="selectYear()" readonly required>
+				</div>
+			</div>
+
+			<div class="dbl-margin">
+				<button class="button button-block button-assertive" ng-disabled="authForm.$invalid">下一步</button>
+			</div>
+		</form>
+	</ion-content>
+</ion-view>

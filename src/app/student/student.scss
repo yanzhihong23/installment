@@ -1,0 +1,28 @@
+#stu_auth_fail{
+	.icon{
+		vertical-align: middle;
+	}
+	.scroll{
+		height: 100%;
+	}
+	.desc{
+		text-align: center;
+		.wrapper{
+			display: inline-block;
+			text-align: left;
+		}
+	}
+	.code-tunnel{
+		.icon{
+			padding-left: 5px;
+		}
+	}
+}
+
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-height : 480px) { // iphone 4
+	#stu_auth_fail .code-tunnel{
+		position: relative;
+	}
+}

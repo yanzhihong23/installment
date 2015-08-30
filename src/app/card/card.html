@@ -1,0 +1,34 @@
+<ion-view>
+	<ion-content>
+		<banner-credit></banner-credit>
+
+		<step name="2" desc="绑定还款银行卡"></step>
+
+		<div class="item">
+			实名信息
+			<span class="item-note">{{user.realname}} {{user.idNo | idEncryptor}}</span>
+		</div>
+
+		<div class="item margin-top" ng-class="{'item-icon-right': !bank.name}">
+			银行卡信息
+			<span class="item-note" ng-click="showAddCardPopup()">{{bank.name}} <span ng-show="card.cardNo">尾号</span>{{card.cardNo | tailNo}}</span>
+			<i class="icon ion-ios-plus-empty assertive" ng-hide="bank.name" ng-click="showAddCardPopup()"></i>
+		</div>
+
+		<div class="padding assertive content-algin-item">为确保资金安全，必须是本人实名的储蓄卡哦</div>
+
+		<div class="item" ng-class="{'item-icon-right': !card.vcode}">
+			手机验证
+			<span class="item-note" ng-click="showPhoneAuthPopup()" ng-show="card.vcode">
+				{{card.phone}}
+			</span>
+			<i class="icon ion-ios-plus-empty assertive" ng-hide="card.vcode" ng-click="showPhoneAuthPopup()"></i>
+		</div>
+
+		<div class="padding"></div>
+		<div class="dbl-margin">
+			<button type="button" class="button button-block button-assertive" ng-disabled="!user.idNo || 
+			!card.vcode || !card.phone" ng-click="submit()">开通</button>
+		</div>
+	</ion-content>
+</ion-view>

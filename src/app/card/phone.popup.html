@@ -1,0 +1,20 @@
+<form name="phoneForm" ng-submit="submitPhone()">
+	<div class="item item-input">
+		<input type="text" ng-model="card.phone" ng-pattern="/^[0-9]{11}$/" placeholder="请输入银行预留手机号" maxlength="11" required>
+	</div>
+
+	<!-- <vcode ng-model="card.vcode" send="sendVcode" class="margin-vertical"></vcode> -->
+	<div class="send-vcode margin-vertical">
+		<div class="item item-input">
+			<input type="text" ng-model="card.vcode" ng-pattern="/^[\s\S]{6}$/" placeholder="请输入验证码" maxlength="6" required>
+		</div>
+		<button type="button" class="button button-block button-assertive no-margin fs-sm" ng-disabled="resendCountdown || !card.phone" ng-click="sendVcode()">
+			<span ng-show="resendCountdown">{{resendCountdown}}秒后重新发送</span>
+			<span ng-hide="resendCountdown">发送验证码</span>
+		</button>
+	</div>
+
+	<div class="padding-top">
+		<button type="submit" class="button button-block button-assertive no-margin" ng-disabled="phoneForm.$invalid">确定</button>
+	</div>
+</form>

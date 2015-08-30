@@ -1,0 +1,17 @@
+.credit-banner{
+	position: relative;
+	.credit{
+		position: absolute;
+		top: 30%;
+		width: 100%;
+		text-align: center;
+		font-size: 16px;
+		.amount{
+			background: $assertive;
+			display: inline-block;
+			padding: 0 5px;
+			color: $energized;
+			font-weight: bold;
+		}
+	}
+}

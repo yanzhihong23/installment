@@ -1,0 +1,41 @@
+<ion-view id="account">
+	<ion-content>
+		<div class="top">
+			<div class="refund-tip dbl-padding-left" ng-show="account.repayment">
+				<img src="assets/images/horn.png" width="18px" alt="">
+				<small>您有一笔待还款<span class="assertive">{{account.repayment | currency: ''}}</span>元，<span class="assertive">{{account.overdueDays}}</span>天后到期</small>
+			</div>
+
+			<div class="available dbl-padding">
+				<div>可用额度（元）</div>
+				<div class="amount">{{account.availabelCredit | currency: ''}}</div>
+			</div>
+		</div>
+
+		<div class="row refund no-padding">
+			<div class="col-50 dbl-padding-left">
+				<div>应还金额（元）</div>
+				<div class="bold">{{account.repayment | currency: ''}}</div>
+			</div>
+			<div class="col-50">
+				<div>还款日期</div>
+				<div class="bold" ng-show="account.lastRepaymentDate">{{account.lastRepaymentDate | moment:'YYYY.MM.DD'}}</div>
+				<div class="bold" ng-hide="account.lastRepaymentDate">--</div>
+			</div>
+		</div>
+
+		<a class="item item-arrow-right dbl-padding-left" ui-sref="bills">
+			账单记录
+		</a>
+		
+		<div bottom>
+			<div class="dbl-margin">
+				<a class="button button-block button-assertive no-margin" ui-sref="download">下载名校贷APP</a>
+			</div>
+			<div class="dbl-margin-bottom text-center">
+				<small class="assertive">0元付由“名校贷钱包”提供，下载名校贷应用，还款更便捷~</small><br>
+				<small class="gray">使用激活时的手机号+短信中的默认密码即可登录</small>
+			</div>
+		</div>
+	</ion-content>
+</ion-view>

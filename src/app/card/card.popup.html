@@ -1,0 +1,13 @@
+<form name="cardForm" ng-submit="submitBank()">
+	<div class="item item-input item-arrow-right" ng-click="selectBank()">
+		<input type="text" ng-model="bank.name" placeholder="请选择开户银行" readonly required>
+	</div>
+
+	<div class="item item-input margin-vertical">
+		<input type="text" ng-model="card.cardNo" ng-pattern="/^[0-9]{16,19}$/" maxlength="19" placeholder="请输入银行卡号" required>
+	</div>
+
+	<div class="padding-top">
+		<button class="button button-block button-assertive no-margin" ng-disabled="cardForm.$invalid">确定</button>
+	</div>
+</form>

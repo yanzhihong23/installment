@@ -1,0 +1,22 @@
+<ion-view>
+  <ion-content>
+    <banner></banner>
+		<form name="resetForm" ng-submit="submit()">
+			<div class="item item-input margin-top">
+				<span class="input-label">新密码</span>
+				<input type="password" placeholder="6-16位" ng-model="user.password" ng-pattern="passwordPattern" maxlength="16" required>
+			</div>
+
+			<div class="item item-input margin-top">
+				<span class="input-label">确认新密码</span>
+				<input type="password" placeholder="6-16位" ng-model="user.confirm" ng-pattern="/^[\s\S]{6,16}$/" maxlength="16" required>
+			</div>
+
+			<div class="text-center assertive fs-xs padding">密码6-16位，至少包含数字、字母、符号中的2种。</div>
+
+			<div class="dbl-margin">
+				<button class="button button-block button-assertive" ng-disabled="resetForm.$invalid || user.password!==user.confirm">下一步</button>
+			</div>
+		</form>
+  </ion-content>
+</ion-view>

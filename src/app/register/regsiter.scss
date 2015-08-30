@@ -1,0 +1,45 @@
+.item-input.vcode{
+	position: relative;
+	input{
+		padding-right: 100px;
+	}
+	.button{
+		position: absolute;
+		right: 10px;
+		top: 7px;
+	}
+}
+
+.tos-modal{
+	padding: 10px;
+	width: 88%;
+	left: 6%;
+	min-height: 80%;
+	height: 86%;
+	top: 7%;
+	border-radius: 6px;
+	overflow-x: visible;
+	overflow-y: scroll;
+	h1{
+		font-size: 24px;
+		text-align: center;
+	}
+	h2{
+		font-size: 18px;
+	}
+	h3{
+		font-size: 16px;
+	}
+	p.ti{
+		text-indent: 2em;
+	}
+	.bar-header .icon{
+		position: absolute;
+		right: 5px;
+	  font-size: 32px;
+	  color: $gray;
+	}
+	.scroll-content{
+		background: #f6f6f6;
+	}
+}

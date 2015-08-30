@@ -1,0 +1,42 @@
+#download{
+	line-height: initial;
+	.scroll{
+		height: 100%;
+		background: linear-gradient(#F7BA55, #F5A623 60%);
+		.wrapper{
+			height: 100%;
+			background: url(../assets/images/dabai.png) no-repeat bottom center;
+			background-size: 271px 197px;
+			padding-top: 10%;
+		}
+	}
+	.download{
+		width: 60%;
+		margin: 0 auto 10%;
+	}
+
+	.button{
+		color: $assertive;
+		border-radius: 6px;
+		box-shadow: 0 0 5px 0 #DE9417;
+		margin-top: 12%;
+		font-weight: bold;
+		font-size: 18px;
+	}
+	.desc{
+		font-family: Heiti SC;
+		font-weight: bold;
+	}
+	.slogan{
+		font-size: 16px;
+		padding: 5px;
+		
+	}
+	.app-name{
+		font-size: 50px;
+		font-family: Heiti SC;
+	}
+	.tips{
+		padding-top: 20px;
+	}
+}

@@ -1,0 +1,290 @@
+/* Do not remove this comments bellow. It's the markers used by wiredep to inject
+   sass dependencies when defined in the bower.json of your dependencies */
+// bower:scss
+// endbower
+
+@import "../../bower_components/ionic/scss/ionic";
+
+$black:             #000;
+$white:             #fff;
+$gray-dark:         #6f7680;
+$gray:              #808080;
+$gray-light:        #ddd;
+
+.view,.pane{
+  background: #F1F1F4;
+}
+
+// overwrite ionic start
+.button.disabled,
+.button[disabled] {
+  opacity: 1;
+  background: #9b9b9b;
+  border-color: #979797;
+}
+
+input[disabled],
+input[readonly]:not(.cloned-text-input){
+  background: $white;
+}
+
+.input-label{
+  width: 30%;
+  font-size: 14px;
+}
+
+.item{
+  font-size: 14px;
+}
+
+.item-arrow-right,
+.item-arrow-down{
+  // padding-right: 40px;
+  &:after{
+    font-family: "Ionicons";
+    content: '\f3d3';
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    font-size: 20px;
+    right: 16px;
+    color: #aaa;
+  }
+}
+
+.item-arrow-down:after{
+  content: '\f3d0';
+}
+
+.popup-large.popup-container .popup{
+  width: 86%;
+}
+
+.popup-no-title .popup-head{
+  display: none;
+}
+
+.item.activated{
+  border-color: $assertive;
+  &, &>input{
+    background: $assertive;
+  }
+  &, *, &.item-arrow-right:after{
+    color: $white;
+  }
+}
+
+.modal-backdrop-bg{
+  background: rgba(0,0,0,.5);
+}
+
+// overwrite ionic end
+
+.init-line-height{
+  line-height: initial;
+}
+
+.dbl-line-height{
+  line-height: 2;
+}
+
+.full-height{
+  height: 100%;
+}
+
+.inline-block{
+  display: inline-block;
+}
+
+.hidden{
+  display: none !important;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.normal{
+  font-weight: normal !important;
+}
+
+.fw-xs{
+  font-weight: 200;
+}
+
+.fs-xs{
+  font-size: 12px;
+}
+
+.fs-sm{
+  font-size: 14px;
+}
+
+.fs-md{
+  font-size: 16px;
+}
+
+.fs-lg{
+  font-size: 20px;
+}
+
+.fs-xl{
+  font-size: 56px;
+}
+
+.fs-18{
+  font-size: 18px;
+}
+
+.fs-36{
+  font-size: 36px;
+}
+
+.transparent{
+  color: transparent !important;
+}
+
+.black{
+  color: $black;
+}
+
+.white{
+  color: $white;
+}
+
+.gray{
+  color: $gray;
+}
+
+.gray-light{
+  color: $gray-light;
+}
+
+.gray-dark{
+  color: $gray-dark;
+}
+
+.transparent-bg{
+  background: transparent;
+}
+
+.white-bg{
+  background: $white;
+}
+
+.whitesmoke-bg{
+  background: whitesmoke;
+}
+
+.content-algin-item{
+  padding-left: $content-padding*1.5+1;
+}
+
+.no-padding{
+  padding: 0 !important;
+}
+
+.no-margin{
+  margin: 0 !important;
+}
+
+.margin{
+  margin: $content-padding;
+}
+
+.margin-top,
+.margin-vertical{
+  margin-top: $content-padding;
+}
+
+.margin-bottom,
+.margin-vertical{
+  margin-bottom: $content-padding;
+}
+
+.margin-left,
+.margin-horizontal{
+  margin-left: $content-padding;
+}
+
+.margin-right,
+.margin-horizontal{
+  margin-right: $content-padding;
+}
+
+.dbl-margin-top,
+.dbl-margin-vertical{
+  margin-top: $content-padding*2;
+}
+
+.dbl-margin-bottom,
+.dbl-margin-vertical{
+  margin-bottom: $content-padding*2;
+}
+
+.dbl-margin-left,
+.dbl-margin-horizontal{
+  margin-left: $content-padding*2;
+}
+
+.dbl-margin-right,
+.dbl-margin-horizontal{
+  margin-right: $content-padding*2;
+}
+
+.dbl-margin{
+  margin: $content-padding*2;
+}
+
+
+/**
+ * Content Padding
+ * --------------------------------------------------
+ */
+
+.dbl-padding {
+  padding: $content-padding*2;
+}
+
+.dbl-padding-top,
+.dbl-padding-vertical {
+  padding-top: $content-padding*2;
+}
+
+.dbl-padding-right,
+.dbl-padding-horizontal {
+  padding-right: $content-padding*2;
+}
+
+.dbl-padding-bottom,
+.dbl-padding-vertical {
+  padding-bottom: $content-padding*2;
+}
+
+.dbl-padding-left,
+.dbl-padding-horizontal {
+  padding-left: $content-padding*2;
+}
+
+ol.decimal{
+  list-style-type: decimal;
+  padding-left: 30px;
+}
+
+.pull-left{
+  float: left;
+}
+
+.pull-right{
+  float: right;
+}
+
+
+
+/* Do not remove this comments bellow. It's the markers used by gulp-inject to inject
+   all your sass files automatically */
+// injector
+// endinjector

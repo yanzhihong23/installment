@@ -1,0 +1,29 @@
+<ion-view>
+	<ion-content>
+		<banner-credit id></banner-credit>
+
+		<section ng-show="authFail">
+			<fail-alert msg="sorry，身份信息异常！" class="white-bg"></fail-alert>
+			<div class="padding-top content-algin-item gray">请重新拍照并上传照片</div>
+		</section>
+
+		<div class="item margin-top item-icon-right">
+			身份证正面上传
+			<span class="item-note" ng-show="file.front.uploaded">上传成功</span>
+			<i class="icon ion-ios-plus-empty assertive" ng-hide="file.front.uploaded" ng-click="showFrontPopup()"></i>
+			<i class="icon ion-ios-checkmark-empty balanced" ng-show="file.front.uploaded"></i>
+		</div>
+
+		<div class="item margin-top item-icon-right">
+			手持身份证上传
+			<span class="item-note" ng-show="file.hold.uploaded">上传成功</span>
+			<i class="icon ion-ios-plus-empty assertive" ng-hide="file.hold.uploaded" ng-click="showHoldPopup()"></i>
+			<i class="icon ion-ios-checkmark-empty balanced" ng-show="file.hold.uploaded"></i>
+		</div>
+
+		<div class="dbl-padding" bottom>
+			<button class="button button-block button-assertive no-margin" ng-disabled="!file.front.uploaded || !file.hold.uploaded" ng-click="submit()">提交</button>
+		</div>
+
+	</ion-content>
+</ion-view>
