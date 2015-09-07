@@ -6,14 +6,13 @@
     .controller('PayPasswordController', PayPasswordController);
 
   /** @ngInject */
-  function PayPasswordController($scope, $ionicLoading, $log, MSApi, utils, userService) {
+  function PayPasswordController($scope, $ionicLoading, $log, MSApi, utils, userService, md5) {
   	var resendCountdown = utils.resendCountdown($scope),
         user = userService.getUser(),
         sessionId = userService.getSessionId();
 
     $scope.user = {
-    	phone: user && user.phone,
-      sessionId: sessionId
+    	phone: user && user.phone
     };
 
     $scope.sendSms = function() {
@@ -30,8 +29,11 @@
 
     $scope.submit = function() {
     	$ionicLoading.show();
-    	MSApi.retrievePayPassword($scope.user)
-    		.success(function(data) {
+    	MSApi.retrievePayPassword({
+        sessionId: sessionId,
+        vcode: $scope.user.vcode,
+        password: md5.createHash($scope.user.password)
+      }).success(function(data) {
     			if(data.flag === 1) {
             utils.alert({
               title: '恭喜您~',
