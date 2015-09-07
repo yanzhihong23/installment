@@ -93,7 +93,7 @@
           userService.setSessionId(data.session_id);
           userService.setMId(data.m_id);
 
-          // $state.go('home');
+          $state.go('home');
         } else {
           phonePopupErrorAlert(data.msg);
         }
