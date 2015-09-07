@@ -287,7 +287,7 @@
       privacyModal.hide();
     };
 
-    $ionicModal.fromTemplateUrl('app/register/privacy.tos.html', {
+    $ionicModal.fromTemplateUrl('app/student/privacy.tos.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function(modal) {

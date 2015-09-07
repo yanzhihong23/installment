@@ -6,7 +6,7 @@
     .controller('OrderController', OrderController);
 
   /** @ngInject */
-  function OrderController($scope, $state, $stateParams, $ionicLoading, $location, $log, OPENID, utils, userService, NonoWebApi, localStorageService) {
+  function OrderController($scope, $state, $ionicLoading, $log, utils, NonoWebApi, localStorageService) {
     $scope.order = {
       openId: Math.floor(Math.random()*1000000),
       orderId: Math.floor(Math.random()*100000000),
