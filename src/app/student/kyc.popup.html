@@ -1,0 +1,15 @@
+<form name="kycForm" ng-submit="submitKyc()">
+	<ion-item class="item-input margin-top">
+		<span class="input-label">姓名</span>
+		<input type="text" placeholder="请输入姓名" ng-model="user.realname" required>
+	</ion-item>
+
+	<ion-item class="item-input margin-top">
+		<span class="input-label">身份证</span>
+		<input type="text" placeholder="请输入身份证" ng-model="user.idNo" ng-pattern="/^[\s\S]{18}$/" maxlength="18" required>
+	</ion-item>
+
+	<div class="dbl-margin-top">
+		<button class="button button-block button-positive no-margin" ng-disabled="kycForm.$invalid">确定</button>
+	</div>
+</form>

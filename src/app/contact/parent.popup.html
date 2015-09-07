@@ -1,0 +1,15 @@
+<form name="parentForm" ng-submit="submitParent()">
+	<ion-item class="item-input margin-top">
+		<span class="input-label">父亲/母亲</span>
+		<input type="text" placeholder="请输入父亲或母亲的姓名" ng-model="parent.name" required>
+	</ion-item>
+
+	<ion-item class="item-input margin-top">
+		<span class="input-label">手机号码</span>
+		<input type="text" placeholder="请输入父亲或母亲的手机号码" ng-model="parent.phone" ng-pattern="/^[0-9]{11}$/" maxlength="11" required>
+	</ion-item>
+
+	<div class="dbl-margin-top">
+		<button class="button button-block button-positive no-margin" ng-disabled="parentForm.$invalid">确定</button>
+	</div>
+</form>

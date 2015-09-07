@@ -1,29 +1,33 @@
 <ion-view>
 	<ion-content>
-		<banner-credit id></banner-credit>
+		<flow stage="4" name="上传资料"></flow>
 
-		<section ng-show="authFail">
-			<fail-alert msg="sorry，身份信息异常！" class="white-bg"></fail-alert>
-			<div class="padding-top content-algin-item gray">请重新拍照并上传照片</div>
+		<section class="dbl-margin-horizontal dbl-margin-bottom dbl-padding text-center upload-desc file">
+			<div class="dbl-margin">
+				<img src="assets/images/camera.png" width="50px" alt="">
+			</div>
+			<div class="fs-lg">拍照上传身份证正面照</div>
+			<div class="margin-vertical">
+				<ol class="decimal text-left inline-block">
+					<li>请垂直拍摄你的<span class="positive">身份证正面照</span></li>
+					<li>保持身份证文字清晰</li>
+					<li>请保持照片环境光线明亮、均匀</li>
+				</ol>
+			</div>
+			<div class="preview" ng-class="{uploaded: file.front.preview}">
+				<img ng-show="file.front.preview" ng-src="{{file.front.preview}}" height="100%" alt="">
+			</div>
+
+			<input type="file" accept="image/*" ng-model="file.front" base-sixty-four-input>
 		</section>
 
-		<div class="item margin-top item-icon-right">
-			身份证正面上传
-			<span class="item-note" ng-show="file.front.uploaded">上传成功</span>
-			<i class="icon ion-ios-plus-empty assertive" ng-hide="file.front.uploaded" ng-click="showFrontPopup()"></i>
-			<i class="icon ion-ios-checkmark-empty balanced" ng-show="file.front.uploaded"></i>
-		</div>
+		<section bottom>
+			<div class="dbl-padding">
+				<button class="button button-block button-positive no-margin" ng-disabled="!file.front.uploaded" ng-click="submit()">下一步</button>
+			</div>
 
-		<div class="item margin-top item-icon-right">
-			手持身份证上传
-			<span class="item-note" ng-show="file.hold.uploaded">上传成功</span>
-			<i class="icon ion-ios-plus-empty assertive" ng-hide="file.hold.uploaded" ng-click="showHoldPopup()"></i>
-			<i class="icon ion-ios-checkmark-empty balanced" ng-show="file.hold.uploaded"></i>
-		</div>
-
-		<div class="dbl-padding" bottom>
-			<button class="button button-block button-assertive no-margin" ng-disabled="!file.front.uploaded || !file.hold.uploaded" ng-click="submit()">提交</button>
-		</div>
+			<slogan></slogan>
+		</section>
 
 	</ion-content>
 </ion-view>

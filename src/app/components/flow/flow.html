@@ -1,0 +1,20 @@
+<article class="flow">
+	<div class="row chart">
+		<div class="col-20" ng-class="{active: stage, current: stage === 1}">
+			<div class="stage">第1步</div>
+		</div>
+		<div class="col-20" ng-class="{active: stage >= 2, current: stage === 2}">
+			<div class="stage">第2步</div>
+		</div>
+		<div class="col-20" ng-class="{active: stage >= 3, current: stage === 3}">
+			<div class="stage">第3步</div>
+		</div>
+		<div class="col-20" ng-class="{active: stage >= 4, current: stage === 4}">
+			<div class="stage">第4步</div>
+		</div>
+		<div class="col-20" ng-class="{active: stage >= 5, current: stage === 5}">
+			<div class="stage">第5步</div>
+		</div>
+	</div>
+	<div class="text-center dbl-padding positive bold name">{{name}}</div>
+</article>

@@ -1,8 +1,6 @@
 <ion-view>
 	<ion-content>
-		<banner-credit></banner-credit>
-
-		<step name="2" desc="绑定还款银行卡"></step>
+		<flow stage="3" name="完善还款银行卡信息"></flow>
 
 		<div class="item">
 			实名信息
@@ -12,23 +10,34 @@
 		<div class="item margin-top" ng-class="{'item-icon-right': !bank.name}">
 			银行卡信息
 			<span class="item-note" ng-click="showAddCardPopup()">{{bank.name}} <span ng-show="card.cardNo">尾号</span>{{card.cardNo | tailNo}}</span>
-			<i class="icon ion-ios-plus-empty assertive" ng-hide="bank.name" ng-click="showAddCardPopup()"></i>
+			<plus-icon ng-hide="bank.name" ng-click="showAddCardPopup()"></plus-icon>
 		</div>
 
-		<div class="padding assertive content-algin-item">为确保资金安全，必须是本人实名的储蓄卡哦</div>
+		<div class="padding positive content-algin-item">为确保资金安全，必须是本人实名的储蓄卡哦~</div>
 
 		<div class="item" ng-class="{'item-icon-right': !card.vcode}">
 			手机验证
 			<span class="item-note" ng-click="showPhoneAuthPopup()" ng-show="card.vcode">
 				{{card.phone}}
 			</span>
-			<i class="icon ion-ios-plus-empty assertive" ng-hide="card.vcode" ng-click="showPhoneAuthPopup()"></i>
+			<plus-icon ng-hide="card.vcode" ng-click="showPhoneAuthPopup()"></plus-icon>
+
 		</div>
 
-		<div class="padding"></div>
-		<div class="dbl-margin">
-			<button type="button" class="button button-block button-assertive" ng-disabled="!user.idNo || 
-			!card.vcode || !card.phone" ng-click="submit()">开通</button>
-		</div>
+		<div class="padding gray content-algin-item">*为验证银行卡是否有效，会自动向名校贷账户充值1元。</div>
+
+		<!-- <div class="padding"></div> -->
+		<section bottom>
+			<div class="dbl-padding-horizontal padding-vertical">
+				<button type="button" class="button button-block button-positive bold" ng-disabled="!user.idNo || 
+				!card.vcode || !card.phone" ng-click="submit()">绑定</button>
+			</div>
+			
+			<div class="gray fs-xs text-center">
+				点击绑定即代表您已同意<span class="positive">《快钱支付协议》</span>
+			</div>
+			<slogan></slogan>
+		</section>
+		
 	</ion-content>
 </ion-view>

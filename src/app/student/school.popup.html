@@ -1,0 +1,25 @@
+<form name="schoolForm" ng-submit="submitSchool()">
+	<ion-item class="item-input margin-top">
+		<span class="input-label">学校</span>
+		<input type="text" placeholder="请输入学校名称" auto-complete options="schoolList" ng-model="user.school" required>
+	</ion-item>
+
+	<ion-item class="item-input margin-top item-arrow-down">
+		<span class="input-label">入学年份</span>
+		<input type="text" placeholder="请选择入学年份" ng-model="user.year" ng-click="selectYear()" readonly required>
+	</ion-item>
+
+	<ion-item class="item-input margin-top item-arrow-down">
+		<span class="input-label">专业</span>
+		<input type="text" placeholder="请选择专业" ng-model="user.major" ng-click="selectMajor()" readonly required>
+	</ion-item>
+
+	<ion-item class="item-input margin-top item-arrow-down">
+		<span class="input-label">学历</span>
+		<input type="text" placeholder="请选择学历" ng-model="user.degree" ng-click="selectDegree()" readonly required>
+	</ion-item>
+
+	<div class="dbl-margin-top">
+		<button class="button button-block button-positive no-margin" ng-disabled="schoolForm.$invalid">确定</button>
+	</div>
+</form>

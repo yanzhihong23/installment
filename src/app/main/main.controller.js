@@ -6,11 +6,8 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $state, $stateParams, $ionicLoading, $location, $log, OPENID, utils, userService, NonoWebApi, localStorageService) {
+  function MainController($scope, $state, $stateParams, $ionicLoading, $location, $log, utils, userService, NonoWebApi, localStorageService) {
     var search = utils.getLocationSearch();
-    // OPENID = search.openId || '9527';
-    // $log.info('openId', OPENID);
-
     if(search.clear) {
       $log.info('clear local storage');
       localStorageService.clearAll();
@@ -19,43 +16,48 @@
     $ionicLoading.show();
     var user = userService.getUser();
 
-    var studentAuthCheck = function() {
-      $ionicLoading.show();
-      NonoWebApi.isAuthenticatedSchoolRoll({phone: user.phone})
-        .success(function(data) {
-          if(+data.result === 1) { // authenticated
-            creditActivateCheck();
-          } else {
-            $state.go('studentAuth');
-          }
-        });
-    };
-
-    var creditActivateCheck = function() {
-      $ionicLoading.show();
-      NonoWebApi.isPaymentActivated()
-        .success(function(data) {
-          if(+data.result === 1) { // actived
-            $state.go('account');
-          } else {
-            var process = userService.getProcess();
-            if(process === 'bindCard') {
-              $state.go('card');
-            } else if(process === 'uploadId') {
-              $state.go('id');
-            } else {
-              Math.random()*10000 > 5000 ? $state.go('card') : $state.go('id');
-            }
-          }
-        });
-    };
-
     if(!user) {
-      $state.go('phone');
-    } else if(user.credit) {
-      $state.go('account');
+      $state.go('studentAuth');
     } else {
-      studentAuthCheck();
+      NonoWebApi.flowStatus().success(function(data) {
+        if(+data.result === 1) {
+          switch(+data.map.dingweiStatus) {
+            case 0: // need to do register
+            case 1: // need to do student auth
+              $state.go('studentAuth');
+              break;
+            case 2: // need to add contact info
+              if(userService.getQuotaStatus() === 'passed') {
+                $state.go('contact');
+              } else {
+                $state.go('quota');
+              }
+              break;
+            case 3: // need to bind bank card
+              $state.go('card');
+              break;
+            case 4: // need to upload id
+              $state.go('id');
+              break;
+            case 6: // need to do video auth
+              $state.go('video');
+              break;
+            case 7: // video auth in progress
+              $state.go('audit');
+              break;
+            case 8: // video auth pass
+              $state.go('audit:pass');
+              break;
+            case 9: // reject
+              break;
+            case 10:
+              $state.go('video:fail');
+              break;
+          }
+        } else {
+          utils.alert({content: data.message});
+        }
+      })
     }
   }
 })();

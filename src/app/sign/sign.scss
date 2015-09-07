@@ -1,0 +1,9 @@
+#sign{
+	.item.box{
+		padding-left: 10px;
+		line-height: 1.42;
+		&.activated{
+			background: $positive;
+		}
+	}
+}

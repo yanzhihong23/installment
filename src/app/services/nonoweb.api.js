@@ -6,14 +6,13 @@
     .service('NonoWebApi', NonoWebApi);
 
   /** @ngInject */
-  function NonoWebApi($http, md5, utils, APISERVER, OPENID, MERCHANT, PRODUCTID, $log) {
+  function NonoWebApi($http, $location, md5, utils, APISERVER, ORDER, MERCHANT, PRODUCTID, $log) {
   	var v = 'm.nonobank.com/msapi/'+ utils.getDate(),
   			vMd5 = md5.createHash(v),
   			headers = {'Authorization': vMd5,'Content-Type': 'application/x-www-form-urlencoded'};
 
-    var search = utils.getLocationSearch();
-    OPENID = search.openId || OPENID;
-    $log.info('openId in NonoWebApi', OPENID);
+    var OPENID = ORDER.openId,
+        ORDERID = ORDER.orderId;
 
 		this.isRegister = function(obj) {
 			return $http({
@@ -77,6 +76,7 @@
   		});
 		};
 
+    // zeropay
     this.isPaymentActivated = function(obj) {
       return $http({
         method: 'POST',
@@ -92,6 +92,7 @@
       });
     };
 
+    // zeropay
     this.activePayment = function(obj) {
       return $http({
         method: 'POST',
@@ -119,6 +120,7 @@
       });
     };
 
+    // zeropay
     this.authenticateSchoolRoll = function(obj) {
       return $http({
         method: 'POST',
@@ -140,6 +142,7 @@
       });
     };
 
+    // zeropay
     this.uploadCertPhoto = function(obj) {
       return $http({
         method: 'POST',
@@ -160,6 +163,7 @@
       });
     };
 
+    // zeropay
     this.uploadHoldCertPhoto = function(obj) {
       return $http({
         method: 'POST',
@@ -178,6 +182,7 @@
       });
     };
 
+    // zeropay
     this.getAccountSummary = function() {
       return $http({
         method: 'POST',
@@ -193,6 +198,7 @@
       });
     };
 
+    // zeropay
     this.getAvailableCreditLine = function() {
       return $http({
         method: 'POST',
@@ -208,6 +214,7 @@
       });
     };
 
+    // zeropay
     this.getBillDetail = function(obj) {
       return $http({
         method: 'POST',
@@ -225,6 +232,7 @@
       });
     };
 
+    // zeropay
     this.saveActionLog = function(obj) {
       return $http({
         method: 'POST',
@@ -239,6 +247,99 @@
             actionType: obj.actionType, // 0未操作 1注册 2登录 3学籍认证 4上传身份证 5脸纹认证 6绑卡 7授信激活 8下载APP 9其他操作
             actionResult: obj.actionResult, // 0: fail, 1: success, 2: in process
             remark: obj.remark
+          })
+        })
+      });
+    };
+
+    // for test, simulate order submit
+    this.submitOrder = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.NONOWEB + '/ruyiFenqi/submitOrder',
+        headers: headers,
+        data: utils.param({
+          request: JSON.stringify({
+            openId: obj.openId,
+            merchant: MERCHANT,
+            productId: PRODUCTID,
+            aim: obj.aim,
+            orderId: obj.orderId,
+            amount: obj.amount,
+            expect: obj.expect,
+            orderTime: obj.orderTime,
+            orderStatus: obj.orderStatus,
+            address: obj.address,
+            mobile: obj.phone,
+            msgKey: md5.createHash(obj.openId + MERCHANT + obj.aim + obj.amount + obj.expect + obj.orderId + PRODUCTID + obj.orderTime + obj.orderStatus + obj.address + obj.phone)
+          })
+        })
+      });
+    };
+
+    // use in audit success page
+    this.getOrderStauts = function() {
+      return $http({
+        method: 'POST',
+        url: APISERVER.NONOWEB + '/ruyiFenqi/queryOrderStatus',
+        headers: headers,
+        data: utils.param({
+          request: JSON.stringify({
+            openId: OPENID,
+            merchant: MERCHANT,
+            orderId: ORDERID,
+            msgKey: md5.createHash(OPENID + MERCHANT + ORDERID)
+          })
+        })
+      });
+    };
+
+    // quota limit
+    this.studentApply = function() {
+      return $http({
+        method: 'POST',
+        url: APISERVER.NONOWEB + '/ruyiFenqi/studentApply',
+        headers: headers,
+        data: utils.param({
+          request: JSON.stringify({
+            openId: OPENID,
+            merchant: MERCHANT,
+            orderId: ORDERID,
+            msgKey: md5.createHash(MERCHANT + OPENID + ORDERID)
+          })
+        })
+      });
+    };
+
+    this.flowStatus = function() {
+      return $http({
+        method: 'POST',
+        url: APISERVER.NONOWEB + '/ruyiFenqi/dingwei',
+        headers: headers,
+        data: utils.param({
+          request: JSON.stringify({
+            openId: OPENID,
+            merchant: MERCHANT,
+            orderId: ORDERID,
+            msgKey: md5.createHash(OPENID + MERCHANT + ORDERID)
+          })
+        })
+      });
+    };
+
+    this.sign = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.NONOWEB + '/ruyiFenqi/queRenShouhuo',
+        headers: headers,
+        data: utils.param({
+          request: JSON.stringify({
+            openId: OPENID,
+            merchant: MERCHANT,
+            orderId: ORDERID,
+            type: 1, // 1: confirm, 2: refuse
+            paymentPassword: obj.payPassword,
+            msgKey: md5.createHash(OPENID + MERCHANT + ORDERID + 1 + obj.payPassword)
           })
         })
       });

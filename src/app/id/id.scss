@@ -1,10 +1,34 @@
 .file{
 	position: relative;
-	input[type='file']{
+	input[type='file'], .preview{
 		position: absolute;
 		width: 100%;
-		// height: 100%;
-		bottom: 10px;
+		height: 100%;
+		// bottom: 10px;
+		top: 0;
+		left: 0;
 		opacity: 0;
+	}
+	.preview{
+		opacity: 1;
+	  border-radius: 6px;
+	  &.uploaded{
+	  	background: rgba(0,0,0,.5);
+	  }
+		img{
+			display: block;
+			width: 100%;
+			height: 100%;
+			margin: 0 auto;
+		}
+	}
+}
+
+.upload-desc{
+	border: solid 1px $positive;
+	border-radius: 6px;
+	background: $white;
+	.icon{
+		font-size: 60px;
 	}
 }

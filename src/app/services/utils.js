@@ -82,13 +82,13 @@
 			},
 			alert: function(obj) {
 				var alertPopup = $ionicPopup.alert({
-				  title: obj.title || '温馨提示',
+				  title: obj.title || '出错了~',
 				  cssClass: obj.cssClass || 'text-center',
 				  subTitle: obj.subTitle || '',
 				  template: obj.content || '',
 				  templateUrl: obj.contentUrl || '',
 				  okText: obj.okText || '确认',
-				  okType: obj.okType || 'button-assertive'
+				  okType: obj.okType || 'button-positive'
 				});
 				alertPopup.then(function(res) {
 					obj.callback && obj.callback();
@@ -96,11 +96,11 @@
 			},
 			confirm: function(obj) {
 				var confirmPopup = $ionicPopup.confirm({
-				  title: obj.title || '温馨提示',
+				  title: obj.title || '出错了~',
 				  template: obj.content || '',
 				  cssClass: obj.cssClass || 'text-center',
 				  okText: obj.okText || '确认',
-				  okType: obj.okType || 'button-assertive',
+				  okType: obj.okType || 'button-positive',
 				  cancelText: obj.cancelText || '取消'
 				});
 				confirmPopup.then(function(res) {
@@ -147,6 +147,8 @@
 				  $log.debug('width', width);
 				  $log.debug('height', height);
 				  $log.debug('result', canvas.toDataURL(file.filetype, 0.95));
+
+				  file.preview = canvas.toDataURL(file.filetype, 0.95);
 
 				  var result = canvas.toDataURL(file.filetype, 0.95).substring(header.length);
 				  // $log.debug(canvas.toDataURL(file.filetype, 0.7));

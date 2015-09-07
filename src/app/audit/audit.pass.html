@@ -1,0 +1,34 @@
+<ion-view class="white-bg">
+	<ion-content>
+		<img src="assets/images/audit-pass.png" width="100%" alt="">
+
+		<div class="padding gray text-center">如需查看进度，请至个人订单中心</div>
+
+		<div class="dbl-padding-horizontal">
+			<button class="button button-block button-positive bold" ng-click="sign()">签收</button>
+		</div>
+
+		<section class="dbl-margin">
+			<div class="row">
+				<div class="col-50 text-right padding-right padding-bottom">还款期数</div>
+				<div class="col-50"><span class="positive">{{order.duration || 0}}</span> 期</div>
+			</div>
+			<div class="row">
+				<div class="col-50 text-right padding-right padding-bottom">每期还款</div>
+				<div class="col-50"><span class="positive">{{order.perRepay || 0 | currency:''}}</span> 元</div>
+			</div>
+			<div class="row">
+				<div class="col-50 text-right padding-right padding-bottom">每月最晚还款日</div>
+				<div class="col-50">收货日</div>
+			</div>
+
+			<div class="gray text-center fs-xs">如还款当月无此日，则当月最后一日为还款日</div>
+		</section>
+
+		<section class="dbl-padding">
+			<a class="button button-block button-stable bold positive" ui-sref="download">还款请下载名校贷APP</a>
+			<slogan></slogan>
+		</section>
+		
+	</ion-content>
+</ion-view>

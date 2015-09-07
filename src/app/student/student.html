@@ -1,37 +1,36 @@
 <ion-view>
 	<ion-content>
-		<step name="1" desc="学籍认证" class="white-bg"></step>
+		<flow stage="1" name="学生身份信息认证"></flow>
 
-		<form name="authForm" ng-submit="submit()">
-			<div class="margin-top">
-				<div class="item item-input">
-					<span class="input-label">姓名</span>
-					<input type="text" placeholder="请输入姓名" ng-model="user.realname" required>
-				</div>
-				<div class="item item-input">
-					<span class="input-label">身份证</span>
-					<input type="text" placeholder="请输入身份证" ng-model="user.idNo"  ng-pattern="/^[\s\S]{15,18}$/" maxlength="18" id-number required>
-				</div>
+		<ion-item ng-class="{'item-icon-right': !showPhoneInfo}">
+			手机信息
+			<span class="item-note" ng-show="showPhoneInfo">{{user.phone}}</span>
+			<plus-icon ng-click="showPhonePopup()" ng-hide="showPhoneInfo"></plus-icon>
+		</ion-item>
+
+		<ion-item class="margin-top" ng-class="{'item-icon-right': !showKycInfo}">
+			实名信息
+			<span class="item-note" ng-show="showKycInfo" ng-click="showKycPopup()">
+				{{user.realname}} {{user.idNo | idEncryptor}}
+			</span>
+			<plus-icon ng-click="showKycPopup()" ng-hide="showKycInfo"></plus-icon>
+		</ion-item>
+
+		<ion-item class="margin-top" ng-class="{'item-icon-right': !showSchoolInfo}">
+			学籍信息
+			<span class="item-note" ng-show="showSchoolInfo" ng-click="showSchoolPopup()">
+				{{user.school}} {{user.major}} {{user.degree}}
+			</span>
+			<plus-icon ng-click="showSchoolPopup()" ng-hide="showSchoolInfo"></plus-icon>
+		</ion-item>
+
+		<section bottom>
+			<div class="dbl-padding">
+				<button class="button button-block button-positive" ng-disabled="!showPhoneInfo || !showKycInfo || !showSchoolInfo" ng-click="submitStudentInfo()">下一步</button>
 			</div>
 
-			<div class="margin-top">
-				<div class="item item-input">
-					<span class="input-label">学校</span>
-					<input type="text" placeholder="请输入学校名称" auto-complete options="schoolList" ng-model="user.school" required>
-				</div>
-				<div class="item item-input item-arrow-down">
-					<span class="input-label">学历</span>
-					<input type="text" placeholder="请选择学历" ng-model="user.degree" ng-click="selectDegree()" readonly required>
-				</div>
-				<div class="item item-input item-arrow-down">
-					<span class="input-label">入学年份</span>
-					<input type="text" placeholder="请选择入学年份" ng-model="user.year" ng-click="selectYear()" readonly required>
-				</div>
-			</div>
+			<slogan></slogan>
+		</section>
 
-			<div class="dbl-margin">
-				<button class="button button-block button-assertive" ng-disabled="authForm.$invalid">下一步</button>
-			</div>
-		</form>
 	</ion-content>
 </ion-view>

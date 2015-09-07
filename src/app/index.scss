@@ -2,7 +2,12 @@
    sass dependencies when defined in the bower.json of your dependencies */
 // bower:scss
 // endbower
-
+$positive:          #00aaee;
+$assertive:         #D0021B;
+$stable:            #f1f1f4;
+$button-border-radius:  6px;
+$popup-border-radius:   6px;
+$button-border-width:   0;
 @import "../../bower_components/ionic/scss/ionic";
 
 $black:             #000;
@@ -11,11 +16,17 @@ $gray-dark:         #6f7680;
 $gray:              #808080;
 $gray-light:        #ddd;
 
+
 .view,.pane{
   background: #F1F1F4;
 }
 
 // overwrite ionic start
+.button{
+  &.button-stable.positive{
+    color: $positive;
+  }
+}
 .button.disabled,
 .button[disabled] {
   opacity: 1;
@@ -68,9 +79,9 @@ input[readonly]:not(.cloned-text-input){
 }
 
 .item.activated{
-  border-color: $assertive;
+  border-color: $positive;
   &, &>input{
-    background: $assertive;
+    background: $positive;
   }
   &, *, &.item-arrow-right:after{
     color: $white;
@@ -81,6 +92,13 @@ input[readonly]:not(.cloned-text-input){
   background: rgba(0,0,0,.5);
 }
 
+.popup-title{
+  font-size: 16px;
+}
+
+.item-icon-right .icon{
+  font-size: 26px;
+}
 // overwrite ionic end
 
 .init-line-height{
@@ -280,6 +298,10 @@ ol.decimal{
 
 .pull-right{
   float: right;
+}
+
+.underline{
+  text-decoration: underline;
 }
 
 

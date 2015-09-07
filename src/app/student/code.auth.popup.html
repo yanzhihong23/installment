@@ -2,8 +2,8 @@
 	<input type="text" ng-model="data.code" placeholder="请输入学籍码">
 </div>
 <div class="text-right padding-vertical">
-	<a class="assertive">如何查询学籍码？</a>
+	<a class="positive" ng-click="getCode()">如何查询学籍码？</a>
 </div>
 <div class="padding-top">
-	<button class="button button-block button-assertive no-margin" ng-disabled="!data.code" ng-click="submit()">确定</button>
+	<button class="button button-block button-positive no-margin" ng-disabled="!data.code" ng-click="submit()">确定</button>
 </div>

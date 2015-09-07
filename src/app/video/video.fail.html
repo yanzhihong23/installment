@@ -1,0 +1,45 @@
+<ion-view id="video_fail">
+	<ion-content>
+		<section class="text-center fail-reason white-bg">
+			<ol class="decimal text-left inline-block">
+				<div class="assertive fs-md caption">视屏回退原因</div>
+				<li ng-repeat="reason in reasons">{{reason}}</li>
+			</ol>
+		</section>
+
+		<section>
+			<ion-item class="item-icon-left assertive alert">
+				<i class="icon ion-information-circled"></i>
+				请根据回退原因，进行相应修改
+			</ion-item>
+		</section>
+
+
+		<section class="afresh">
+			<ion-item class="item-icon-left item-arrow-right margin-bottom" ng-click="changeContact()" ng-show="showContact">
+				<i class="icon">
+					<img src="assets/images/contact-icon.png" alt="">
+				</i>
+				修改联系人信息及家庭地址
+			</ion-item>
+
+			<ion-item class="item-icon-left item-arrow-right margin-bottom" ng-click="reUploadId()" ng-show="showID">
+				<i class="icon">
+					<img src="assets/images/img-icon.png" alt="">
+				</i>
+				重新上传图片资料
+			</ion-item>
+
+			<ion-item class="item-icon-left item-arrow-right margin-bottom" ng-click="reRecordVideo()" ng-show="showVideo">
+				<i class="icon">
+					<img src="assets/images/video-icon.png" alt="">
+				</i>
+				重新录制视频签约
+			</ion-item>
+		</section>
+
+		<section bottom>
+			<slogan></slogan>
+		</section>
+	</ion-content>
+</ion-view>

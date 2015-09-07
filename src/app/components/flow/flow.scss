@@ -1,0 +1,56 @@
+@mixin stage($size) {
+	width: $size;
+	height: $size;
+	border-radius: $size;
+	color: $white;
+	background: #c0c0c0;
+	border: solid 2px #d9d9d9;
+	text-align: center;
+	line-height: $size;
+	font-size: 13px;
+	margin: auto;
+}
+
+.flow{
+	.chart{
+		padding: 20px 5px;
+		background: $white;
+	}
+	.name{
+		font-size: 18px;
+	}
+	.col-20{
+		position: relative;
+	}
+	.col-20:not(:last-child):after{
+		$size: 4px;
+		content: '';
+		display: block;
+		width: 0;
+		height: 0;
+		border: solid $size transparent;
+		border-left-color: #c0c0c0;
+		position: absolute;
+		right: -$size*1.5;
+	  top: 50%;
+	  margin-top: -$size;
+	}
+	.stage{
+		@include stage(52px);
+	}
+	.active{
+		.stage{
+			background: $positive;
+		}
+		&:not(.current):after{
+			border-left-color: $positive;
+		}
+	}
+}
+
+@media only screen 
+and (max-device-width : 320px) {
+	.flow .stage{
+		@include stage(48px);
+	}
+}

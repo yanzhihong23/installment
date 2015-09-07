@@ -1,0 +1,37 @@
+<ion-view>
+	<ion-content>
+		<flow stage="2" name="完善联系信息"></flow>
+
+		<ion-item ng-class="{'item-icon-right': !showCoachInfo}">
+			辅导员联系方式
+			<span class="item-note" ng-click="showCoachPopup()" ng-show="showCoachInfo">{{coach.name}} {{coach.phone | phone}}</span>
+			<plus-icon ng-click="showCoachPopup()" ng-hide="showCoachInfo"></plus-icon>
+		</ion-item>
+
+		<ion-item class="margin-top" ng-class="{'item-icon-right': !showParentInfo}">
+			父母联系方式
+			<span class="item-note" ng-click="showParentPopup()" ng-show="showParentInfo">{{parent.name}} {{parent.phone | phone}}</span>
+			<plus-icon ng-click="showParentPopup()" ng-hide="showParentInfo"></plus-icon>
+		</ion-item>
+
+		<ion-item class="margin-top" ng-class="{'item-icon-right': !showFriendInfo}">
+			好友联系方式
+			<span class="item-note" ng-click="showFriendPopup()" ng-show="showFriendInfo">{{friend.name}} {{friend.phone | phone}}</span>
+			<plus-icon ng-click="showFriendPopup()" ng-hide="showFriendInfo"></plus-icon>
+		</ion-item>
+
+		<ion-item class="margin-top" ng-class="{'item-icon-right': !showAddressInfo}">
+			家庭住址
+			<span class="item-note" ng-click="showAddressPopup()" ng-show="showAddressInfo">{{address.province}}{{address.city}}{{address.street}}</span>
+			<plus-icon ng-click="showAddressPopup()" ng-hide="showAddressInfo"></plus-icon>
+		</ion-item>
+
+		<section bottom>
+			<div class="dbl-padding">
+				<button class="button button-block button-positive" ng-click="submitContactInfo()" ng-disabled="!showCoachInfo || !showParentInfo || !showFriendInfo || !showAddressInfo">下一步</button>
+			</div>
+
+			<slogan></slogan>
+		</section>
+	</ion-content>
+</ion-view>

@@ -199,6 +199,121 @@
       });
     };
 
+    // retrieve pay password
+    this.sendSmsForRetrievePayPassword = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/user/sendMobileMessageForPay',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId,
+          mobile: obj.phone
+        })
+      });
+    };
 
+    this.retrievePayPassword = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/user/saveNewPayPassword',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId,
+          validCode: obj.vcode,
+          newZFPwd: obj.password
+        })
+      });
+    };
+
+    this.getProvinceList = function() {
+      return $http({
+        method: 'GET',
+        url: APISERVER.MSAPI + '/dataBase/province',
+        headers: headers
+      });
+    };
+
+    this.getCityList = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/dataBase/city',
+        headers: headers,
+        data: utils.param({
+          province: obj.province
+        })
+      });
+    };
+
+    this.saveStudentInfo = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/student/studentinfo',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId,
+          realname: obj.realname,
+          idnum: obj.idNo,
+          institution: obj.school,
+          education: obj.degree,
+          major: obj.major,
+          intoSchoolTime: obj.year
+        })
+      });
+    };
+
+    this.getContactInfo = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/student/getConnection',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId
+        })
+      });
+    };
+
+    this.saveContactInfo = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/student/improve',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId,
+          counselor: obj.coach.name,
+          counselor_mobile: obj.coach.phone,
+          parent: obj.parent.name,
+          parent_mobile: obj.parent.phone,
+          student1: obj.friend.name,
+          student1_mobile: obj.friend.phone,
+          student2: '',
+          student2_mobile: '',
+          student3: '',
+          student3_mobile: '',
+          home_address: obj.address.province + obj.address.city + obj.address.street
+        })
+      });
+    };
+
+    this.afterApplyInfo = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/student/afterApplyInfo',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId
+        })
+      });
+    };
+
+    this.reAuditApply = function(obj) {
+      return $http({
+        method: 'POST',
+        url: APISERVER.MSAPI + '/student/submitSignByVideo',
+        headers: headers,
+        data: utils.param({
+          sessionId: obj.sessionId
+        })
+      });
+    };
   }
 })();

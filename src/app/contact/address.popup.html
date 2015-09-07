@@ -1,0 +1,28 @@
+<form name="addressForm" ng-submit="submitAddress()">
+	<div class="row margin-top no-padding">
+		<div class="col-50 padding-right">
+			<ion-item class="item-input item-arrow-right" ng-click="selectProvince()">
+				<input type="text" placeholder="省" ng-model="address.province" readonly required>
+			</ion-item>
+		</div>
+		<div class="col-50">
+			<ion-item class="item-input item-arrow-right" ng-click="selectCity()">
+				<input type="text" placeholder="市" ng-model="address.city" readonly required>
+			</ion-item>
+		</div>
+		<!-- <div class="col-33">
+			<ion-item class="item-input item-arrow-down">
+				<input type="text" placeholder="区/县" ng-model="address.district" readonly required>
+			</ion-item>
+		</div> -->
+	</div>
+
+	<ion-item class="item-input margin-top">
+		<span class="input-label">详细地址</span>
+		<input type="text" placeholder="请输入详细地址，具体到门牌号" ng-model="address.street"  required>
+	</ion-item>
+
+	<div class="dbl-margin-top">
+		<button class="button button-block button-positive no-margin" ng-disabled="addressForm.$invalid">确定</button>
+	</div>
+</form>

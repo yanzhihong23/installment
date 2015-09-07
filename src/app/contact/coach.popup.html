@@ -1,0 +1,15 @@
+<form name="coachForm" ng-submit="submitCoach()">
+	<ion-item class="item-input margin-top">
+		<span class="input-label">辅导员</span>
+		<input type="text" placeholder="请输入辅导员姓名" ng-model="coach.name" required>
+	</ion-item>
+
+	<ion-item class="item-input margin-top">
+		<span class="input-label">手机号码</span>
+		<input type="tel" placeholder="请输入辅导员手机号码" ng-model="coach.phone" ng-pattern="/^[0-9]{11}$/" maxlength="11" required>
+	</ion-item>
+
+	<div class="dbl-margin-top">
+		<button class="button button-block button-positive no-margin" ng-disabled="coachForm.$invalid">确定</button>
+	</div>
+</form>

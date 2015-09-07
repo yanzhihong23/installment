@@ -1,0 +1,38 @@
+<ion-view class="white-bg">
+	<ion-content>
+		<img src="assets/images/quota.png" width="100%" alt="">
+
+		<section class="dbl-margin-horizontal margin-vertical gray-bg item box">
+			<div class="row no-padding">
+				<div class="col-33 img">
+					<img src="assets/images/qq.png" width="50px" alt="">
+				</div>
+				<div class="col-66 text">
+					<div>关注此QQ群，抢名额都不是事儿</div>
+					<div>QQ: 342627068</div>
+				</div>
+			</div>
+		</section>
+
+		<section class="dbl-margin">
+			<button class="button button-block button-positive bold" ng-disabled="countdown" ng-click="apply()">
+				<span class="countdown" ng-show="countdown">
+          <span class="odometer" id="h1"></span>
+          <span class="odometer" id="h2"></span>
+          <span class="odometer">:</span>
+          <span class="odometer" id="m1"></span>
+          <span class="odometer" id="m2"></span>
+          <span class="odometer">:</span>
+          <span class="odometer" id="s1"></span>
+          <span class="odometer" id="s2"></span>
+          <span class="odometer">后开抢</span>
+        </span>
+        <span ng-show="!countdown">开抢</span>
+			</button>
+		</section>
+
+		<section bottom>
+			<slogan></slogan>
+		</section>
+	</ion-content>
+</ion-view>
