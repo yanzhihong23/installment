@@ -6,7 +6,7 @@
     .controller('PayPasswordController', PayPasswordController);
 
   /** @ngInject */
-  function PayPasswordController($scope, $state, $stateParams, $ionicLoading, $log, MSApi, utils, userService) {
+  function PayPasswordController($scope, $ionicLoading, $log, MSApi, utils, userService) {
   	var resendCountdown = utils.resendCountdown($scope),
         user = userService.getUser(),
         sessionId = userService.getSessionId();

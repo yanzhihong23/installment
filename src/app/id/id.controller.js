@@ -6,7 +6,7 @@
     .controller('IdController', IdController);
 
   /** @ngInject */
-  function IdController($scope, $rootScope, $state, $stateParams, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, reAuditService, MSApi, md5) {
+  function IdController($scope, $rootScope, $state, $stateParams, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, reAuditService) {
   	var frontPopup, 
   			holdPopup, 
         passwordPopup, 

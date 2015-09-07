@@ -6,7 +6,7 @@
     .controller('QuotaController', QuotaController);
 
   /** @ngInject */
-  function QuotaController($scope, $state, $stateParams, $ionicLoading, $location, $timeout, $log, OPENID, utils, userService, NonoWebApi, localStorageService) {
+  function QuotaController($scope, $state, $stateParams, $ionicLoading, $location, $timeout, $log, utils, userService, NonoWebApi, localStorageService) {
     /**** countdown ****/
     var el_h1 = document.querySelector('#h1'),
         el_h2 = document.querySelector('#h2'),
@@ -93,7 +93,7 @@
           });
         } else {
           userService.setQuotaStatus('failed');
-          localStorageService.add('lastApplyTime', moment().format('YYYY-MM-DD hh-mm-ss'));
+          localStorageService.add('lastApplyTime', moment().format('YYYY-MM-DD hh:mm:ss'));
           utils.alert({
             title: '今日名额已满',
             content: '童鞋可明日再来~',

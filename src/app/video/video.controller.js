@@ -7,12 +7,12 @@
     .controller('VideoFailController', VideoFailController);
 
   /** @ngInject */
-  function VideoController($scope, $rootScope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, MSApi, md5) {
+  function VideoController($scope) {
   	
   }
 
   /** @ngInject */
-  function VideoFailController($scope, $rootScope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, MSApi, md5, reAuditService) {
+  function VideoFailController($scope, $state, $ionicLoading, $log, utils, userService, MSApi, reAuditService) {
   	var sessionId = userService.getSessionId();
 
   	$scope.reasons = [];

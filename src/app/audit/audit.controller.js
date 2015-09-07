@@ -7,7 +7,7 @@
     .controller('AuditPassController', AuditPassController);
 
   /** @ngInject */
-  function AuditController($scope, $rootScope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, MSApi, md5) {
+  function AuditController($scope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, MSApi, md5) {
   	var user = userService.getUser(),
   			sessionId = userService.getSessionId(),
   			passwordPopup;
@@ -50,7 +50,7 @@
   }
 
   /** @ngInject */
-  function AuditPassController($scope, $rootScope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, MSApi, md5) {
+  function AuditPassController($scope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, NonoWebApi, md5) {
   	var passwordPopup;
 
   	$scope.user = {};
