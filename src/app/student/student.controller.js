@@ -7,7 +7,7 @@
     .controller('StudentAuthFailController', StudentAuthFailController);
 
   /** @ngInject */
-  function StudentAuthController($scope, $state, $ionicActionSheet, $ionicPopup, $ionicLoading, $ionicModal, $log, $timeout, NonoWebApi, MSApi, localStorageService, userService, utils, md5) {
+  function StudentAuthController($scope, $state, $ionicActionSheet, $ionicPopup, $ionicLoading, $ionicModal, $log, $timeout, NonoWebApi, MSApi, ORDER, localStorageService, userService, utils, md5) {
   	$scope.user = {};
 
     $scope.doLogin = $scope.doRegister = false;
@@ -87,7 +87,8 @@
             realname: data.realname,
             idNo: data.idnum,
             hasPayPassword: !!data.is_pay_password,
-            hasCard: !!data.is_set_bank
+            hasCard: !!data.is_set_bank,
+            openId: ORDER.openId
           });
 
           userService.setSessionId(data.session_id);
@@ -111,7 +112,8 @@
           // save user info
           userService.setUser({
             phone: $scope.user.phone,
-            password: data.map.password
+            password: data.map.password,
+            openId: ORDER.openId
           });
 
           userService.setSessionId(data.map.sessionId);
@@ -324,7 +326,7 @@
           $state.go('contact');
         } else {
           userService.setQuotaStatus('failed');
-          localStorageService.add('lastApplyTime', moment().format('YYYY-MM-DD hh-mm-ss'));
+          localStorageService.add('lastApplyTime', moment().format('YYYY-MM-DD HH:mm:ss'));
           $state.go('quota');
         }
       });

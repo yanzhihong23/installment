@@ -6,7 +6,7 @@
     .controller('MainController', MainController);
 
   /** @ngInject */
-  function MainController($scope, $state, $stateParams, $ionicLoading, $location, $log, utils, userService, NonoWebApi, localStorageService) {
+  function MainController($scope, $state, $stateParams, $ionicLoading, $location, $log, utils, userService, NonoWebApi, ORDER, localStorageService) {
     var search = utils.getLocationSearch();
     if(search.clear) {
       $log.info('clear local storage');
@@ -17,6 +17,9 @@
     var user = userService.getUser();
 
     if(!user) {
+      $state.go('studentAuth');
+    } else if(user.openId !== ORDER.openId) {
+      localStorageService.remove('user');
       $state.go('studentAuth');
     } else {
       NonoWebApi.flowStatus().success(function(data) {
