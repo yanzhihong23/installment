@@ -7,19 +7,30 @@
     .controller('AuditPassController', AuditPassController);
 
   /** @ngInject */
-  function AuditController($scope, $state, $ionicLoading, $ionicPopup, $log, utils, userService, MSApi, md5) {
+  function AuditController($scope, $state, $ionicLoading, $ionicPopup, $log, $timeout, utils, userService, MSApi, md5) {
   	var user = userService.getUser(),
   			sessionId = userService.getSessionId(),
   			passwordPopup;
 
 		// for pay password popup
-		$scope.user = {};
+		$scope.user = {
+			notMatch: false
+		};
+
+		// check whether password is match
+		$scope.$watch('user.payPasswordConfirm', function(val) {
+		  if(val && val.length === 6 && val !== $scope.user.payPassword) {
+		    $scope.user.notMatch = true;
+		  } else {
+		    $scope.user.notMatch = false;
+		  }
+		}, true);
 
   	if(user && !user.hasPayPassword) {
   		passwordPopup = $ionicPopup.show({
   		  title: '设置支付密码',
   		  subTitle: '用于签收及还款时使用',
-  		  templateUrl: 'app/card/password.popup.html',
+  		  templateUrl: 'app/audit/password.set.popup.html',
   		  scope: $scope,
   		  cssClass: 'popup-large'
   		});
@@ -32,9 +43,8 @@
   	    sessionId: sessionId,
   	    payPassword: md5.createHash($scope.user.payPassword)
   	  }).success(function(data) {
+  	  	passwordPopup.close();
   	    if(data.flag === 1) {
-  	      passwordPopup.close();
-
   	      utils.alert({
   	        title: '恭喜您',
   	        content: '支付密码设置成功',
@@ -44,6 +54,7 @@
   	      });
   	    } else {
   	      $log.error('set pay password failed', data.msg);
+  	      utils.alert({content: data.msg});
   	    }
   	  })
   	};

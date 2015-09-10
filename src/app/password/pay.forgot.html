@@ -26,6 +26,8 @@
 				<input type="password" placeholder="6位数字" ng-model="user.confirm" ng-pattern="/^[0-9]{6}$/" maxlength="6" required>
 			</ion-item>
 
+			<div class="padding assertive" ng-show="notMatch">*两次输入密码不一致</div>
+
 			<div class="dbl-margin">
 				<button class="button button-block button-positive" ng-disabled="forgotForm.$invalid || user.password!==user.confirm">提交</button>
 			</div>

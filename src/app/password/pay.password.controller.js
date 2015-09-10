@@ -15,10 +15,20 @@
     	phone: user && user.phone
     };
 
+    $scope.$watch('user.confirm', function(val) {
+      if(val && val !== $scope.user.password) {
+        $scope.notMatch = true;
+      } else {
+        $scope.notMatch = false;
+      }
+    }, true);
+
     $scope.sendSms = function() {
     	$ionicLoading.show();
-    	MSApi.sendSmsForRetrievePayPassword($scope.user)
-				.success(function(data) {
+    	MSApi.sendSmsForRetrievePayPassword({
+        sessionId: sessionId,
+        phone: $scope.user.phone
+      }).success(function(data) {
 					if(data.flag === 1) {
 						resendCountdown();
 					} else {
