@@ -93,7 +93,7 @@
           });
         } else {
           userService.setQuotaStatus('failed');
-          localStorageService.add('lastApplyTime', moment().format('YYYY-MM-DD hh:mm:ss'));
+          localStorageService.add('lastApplyTime', moment().format('YYYY-MM-DD HH:mm:ss'));
           utils.alert({
             title: '今日名额已满',
             content: '童鞋可明日再来~',
