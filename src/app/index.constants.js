@@ -11,14 +11,22 @@
             $search = $location.search(),
             order = localStorageService.get('order');
 
-        if(!order) {
+        var _openId = search.openId || $search.openId || Math.floor(Math.random()*1000000),
+            _orderId = search.orderId || $search.orderId || Math.floor(Math.random()*1000000);
+
+        if(!order || (order.openId !== _openId)) {
           order = {
-            openId: search.openId || $search.openId || Math.floor(Math.random()*1000000),
-            orderId: search.orderId || $search.orderId || Math.floor(Math.random()*1000000)
+            openId: _openId,
+            orderId: _orderId
           };
 
-          localStorageService.add('order', order);
+          // localStorageService.remove('user');
+          localStorageService.clearAll();
+        } else if(order.openId === _openId && order.orderId !== _orderId) {
+          order.orderId = _orderId;
         }
+
+        localStorageService.add('order', order);
 
         $log.info('order', order);
         return order;

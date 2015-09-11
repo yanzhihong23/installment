@@ -9,7 +9,7 @@
 
 		<div class="item margin-top" ng-class="{'item-icon-right': !bank.name}">
 			银行卡信息
-			<span class="item-note" ng-click="showAddCardPopup()">{{bank.name}} <span ng-show="card.cardNo">尾号</span>{{card.cardNo | tailNo}}</span>
+			<span class="item-note positive" ng-click="showAddCardPopup()">{{bank.name}} <span ng-show="card.cardNo">尾号</span>{{card.cardNo | tailNo}}</span>
 			<plus-icon ng-hide="bank.name" ng-click="showAddCardPopup()"></plus-icon>
 		</div>
 
@@ -17,14 +17,14 @@
 
 		<div class="item" ng-class="{'item-icon-right': !card.vcode}">
 			手机验证
-			<span class="item-note" ng-click="showPhoneAuthPopup()" ng-show="card.vcode">
+			<span class="item-note positive" ng-click="showPhoneAuthPopup()" ng-show="card.vcode">
 				{{card.phone}}
 			</span>
 			<plus-icon ng-hide="card.vcode" ng-click="showPhoneAuthPopup()"></plus-icon>
 
 		</div>
 
-		<div class="padding gray content-algin-item">*为验证银行卡是否有效，会自动向名校贷账户充值1元。</div>
+		<div class="padding gray content-algin-item">*部分银行绑卡会暂扣1元钱，该金额将于24小时内退还至平台余额。</div>
 
 		<!-- <div class="padding"></div> -->
 		<section bottom>
@@ -34,7 +34,7 @@
 			</div>
 			
 			<div class="gray fs-xs text-center">
-				点击绑定即代表您已同意<span class="positive">《快钱支付协议》</span>
+				点击绑定即代表您已同意<span class="positive" ng-click="showPayTosModal()">《快钱支付协议》</span>
 			</div>
 			<slogan></slogan>
 		</section>

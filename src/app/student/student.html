@@ -10,7 +10,7 @@
 
 		<ion-item class="margin-top" ng-class="{'item-icon-right': !showKycInfo}">
 			实名信息
-			<span class="item-note" ng-show="showKycInfo" ng-click="showKycPopup()">
+			<span class="item-note positive" ng-show="showKycInfo" ng-click="showKycPopup()">
 				{{user.realname}} {{user.idNo | idEncryptor}}
 			</span>
 			<plus-icon ng-click="showKycPopup()" ng-hide="showKycInfo"></plus-icon>
@@ -18,7 +18,7 @@
 
 		<ion-item class="margin-top" ng-class="{'item-icon-right': !showSchoolInfo}">
 			学籍信息
-			<span class="item-note" ng-show="showSchoolInfo" ng-click="showSchoolPopup()">
+			<span class="item-note positive" ng-show="showSchoolInfo" ng-click="showSchoolPopup()">
 				{{user.school}} {{user.major}} {{user.degree}}
 			</span>
 			<plus-icon ng-click="showSchoolPopup()" ng-hide="showSchoolInfo"></plus-icon>

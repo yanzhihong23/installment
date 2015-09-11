@@ -7,11 +7,12 @@
     .controller('BankController', BankController);
 
   /** @ngInject */
-  function CardController($scope, $rootScope, $state, $ionicLoading, $ionicPopup, $log, userService, bankService, MSApi, NonoWebApi, utils, md5) {
+  function CardController($scope, $rootScope, $state, $ionicLoading, $ionicPopup, $ionicModal, $log, userService, bankService, MSApi, NonoWebApi, utils, md5) {
     var user = userService.getUser(),
         sessionId = userService.getSessionId(),
         mId = userService.getMId(),
         resendCountdown = utils.resendCountdown($scope),
+        payTosModal,
         addCardPopup,
         phoneAuthPopup,
         passwordPopup,
@@ -36,6 +37,13 @@
     $scope.bank = bankService.selected;
     $scope.card = {};
 
+    $ionicModal.fromTemplateUrl('app/card/pay.tos.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function(modal) {
+      payTosModal = modal;
+    });
+
   	$scope.showAddCardPopup = function() {
       addCardPopup = $ionicPopup.show({
         title: '银行卡信息',
@@ -43,6 +51,14 @@
         scope: $scope,
         cssClass: 'popup-large'
       });
+    };
+
+    $scope.showPayTosModal = function() {
+      payTosModal.show();
+    };
+
+    $scope.closePayTosModal = function() {
+      payTosModal.hide();
     };
 
     $scope.showPhoneAuthPopup = function() {

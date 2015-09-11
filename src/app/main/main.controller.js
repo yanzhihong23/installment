@@ -13,13 +13,25 @@
       localStorageService.clearAll();
     }
 
+    if($stateParams.mock == 'true') {
+      localStorageService.add('reload', true);
+      $location.search('mock', false);
+
+      return;
+    } else if($stateParams.mock == 'false') {
+      var reload = localStorageService.get('reload');
+      if(reload) {
+        localStorageService.remove('reload');
+        location.reload(true);
+
+        return;
+      }
+    }
+
     $ionicLoading.show();
     var user = userService.getUser();
 
     if(!user) {
-      $state.go('studentAuth');
-    } else if(user.openId !== ORDER.openId) {
-      localStorageService.remove('user');
       $state.go('studentAuth');
     } else {
       NonoWebApi.flowStatus().success(function(data) {

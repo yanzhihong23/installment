@@ -9,7 +9,7 @@
   function routeConfig($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
-        url: '/?openId&orderId',
+        url: '/?openId&orderId&mock',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
         controllerAs: 'main'

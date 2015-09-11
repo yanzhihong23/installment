@@ -133,6 +133,8 @@
       .success(function(data) {
         if(data.flag === 3) {
           var info = data.data;
+
+          if(!info) return;
           // coach info
           $scope.coach.name = info.counselor;
           $scope.coach.phone = info.counselor_mobile;

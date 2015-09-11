@@ -311,6 +311,13 @@
           //     $state.go('contact');
           //   }
           // })
+
+          // save kyc info
+          var user = userService.getUser();
+          user.realname = $scope.user.realname;
+          user.idNo = $scope.user.idNo;
+          userService.setUser(user);
+
           applyCheck();
         } else {
           // utils.alert({content: data.msg});

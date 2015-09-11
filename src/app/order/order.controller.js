@@ -27,7 +27,7 @@
         .success(function(data) {
           if(+data.result === 1) {
             localStorageService.add('order', $scope.order);
-            $state.go('home', {openId: $scope.order.openId, orderId: $scope.order.orderId});
+            $state.go('home', {openId: $scope.order.openId, orderId: $scope.order.orderId, mock: true});
           } else {
             utils.alert({content: data.message});
           }

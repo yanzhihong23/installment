@@ -7,7 +7,7 @@
 
   /** @ngInject */
   function MSApi($http, md5, utils, APISERVER) {
-  	var v = 'm.nonobank.com/msapi/'+ utils.getDate(),
+  	var v = 'm.nonobank.com/msapi/' + moment().format('YYYY-MM-DD HH') + Math.floor(moment().minute()/5),
   			vMd5 = md5.createHash(v),
   			headers = {'Authorization': vMd5,'Content-Type': 'application/x-www-form-urlencoded'};
 

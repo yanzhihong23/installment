@@ -21,6 +21,7 @@
 	}
 	.col-20{
 		position: relative;
+		-webkit-box-flex: 1;
 	}
 	.col-20:not(:last-child):after{
 		$size: 4px;

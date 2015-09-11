@@ -14,6 +14,7 @@
     });
 
     // auto login
+    $log.info('runBlock');
     userService.autoLogin();
   }
 
