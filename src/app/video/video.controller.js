@@ -7,8 +7,26 @@
     .controller('VideoFailController', VideoFailController);
 
   /** @ngInject */
-  function VideoController($scope) {
-  	
+  function VideoController($scope, userService, $log) {
+		var bridge, sessionId = userService.getSessionId();
+
+	  if(window.WebViewJavascriptBridge) {
+	  	bridge = WebViewJavascriptBridge;
+	  } else {
+	  	document.addEventListener('WebViewJavascriptBridgeReady', function() {
+	  		bridge = WebViewJavascriptBridge;
+	  	}, false);
+	  }
+
+	  $scope.videoSign = function() {
+	  	if(bridge) {
+	  		bridge.callHandler('videoSign', {'sessionId': sessionId}, function(response) {
+	  			$log.info('videoSign response');
+	  		});
+	  	} else {
+	  		$log.info('no js bridge');
+	  	}
+	  };
   }
 
   /** @ngInject */
