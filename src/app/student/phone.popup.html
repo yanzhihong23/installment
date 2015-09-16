@@ -23,7 +23,7 @@
 	<div class="padding-top text-center fs-xs" ng-if="doRegister">点击确定即代表您已阅读并认可<span class="positive" ng-click="showPrivacyModal()">《服务协议及隐私条款》</span></div>
 
 	<div class="padding-top padding-right text-right fs-xs" ng-if="doLogin">
-		<a ui-sref="password:forgot({phone: user.phone})" class="positive">忘记密码？</a>
+		<a ng-click="forgotPassword()" class="positive">忘记密码？</a>
 	</div>
 
 	<div class="dbl-margin-top">

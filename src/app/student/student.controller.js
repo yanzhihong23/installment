@@ -21,6 +21,11 @@
     var phonePopup, kycPopup, schoolPopup, privacyModal,
         resendCountdown = utils.resendCountdown($scope);
 
+    $scope.forgotPassword = function() {
+      phonePopup.close();
+      $state.go('password:forgot', {phone: $scope.user.phone});
+    };
+
     /******** phone popup block start ********/
     $scope.showPhonePopup = function() {
       phonePopup = $ionicPopup.show({
