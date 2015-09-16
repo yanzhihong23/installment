@@ -8,12 +8,14 @@
     .constant('PRODUCTID', '89')
     .factory('ORDER', function($location, $log, utils, localStorageService) {
         var order = localStorageService.get('order');
-        
+
         $log.info('order', order);
         return order;
     })
-    .factory('APISERVER', function(HOST, $location) {
-    	var host = /nonobank.com/.test($location.host()) ? $location.protocol() + '://' + $location.host() : HOST;
+    .factory('APISERVER', function(HOST, $location, $log) {
+    	var host = /nonobank.com/.test($location.host()) ? $location.protocol() + '://' + $location.host() + ($location.port() ? ':' + $location.port() : '') : HOST;
+
+      $log.info('host', host);
     	return {
     		MSAPI: host + '/msapi',
     		NONOWEB: host + '/nono-web'
