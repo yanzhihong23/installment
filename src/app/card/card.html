@@ -2,9 +2,10 @@
 	<ion-content>
 		<flow stage="3" name="完善还款银行卡信息"></flow>
 
-		<div class="item">
+		<div class="item" ng-class="{'item-icon-right': !user.kyc && !user.realname}">
 			实名信息
-			<span class="item-note">{{user.realname}} {{user.idNo | idEncryptor}}</span>
+			<span class="item-note" ng-class="{positive: !user.kyc}" ng-show="user.idNo" ng-click="showKycPopup()">{{user.realname}} {{user.idNo | idEncryptor}}</span>
+			<plus-icon ng-hide="user.idNo" ng-click="showKycPopup()"></plus-icon>
 		</div>
 
 		<div class="item margin-top" ng-class="{'item-icon-right': !bank.name}">

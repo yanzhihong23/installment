@@ -13,13 +13,14 @@
         mId = userService.getMId(),
         resendCountdown = utils.resendCountdown($scope),
         payTosModal,
+        kycPopup,
         addCardPopup,
         phoneAuthPopup,
         passwordPopup,
         params = {
           sessionId: sessionId,
-          realname: user.realname,
-          idNo: user.idNo,
+          // realname: user.realname,
+          // idNo: user.idNo,
           mId: mId,
           idType: 0,
           count: 1,
@@ -31,7 +32,8 @@
 
     $scope.user = {
       realname: user.realname,
-      idNo: user.idNo
+      idNo: user.idNo,
+      kyc: user.realname && user.idNo
     };
 
     $scope.bank = bankService.selected;
@@ -61,6 +63,17 @@
       payTosModal.hide();
     };
 
+    $scope.showKycPopup = function() {
+      if($scope.user.kyc) return;
+
+      kycPopup = $ionicPopup.show({
+        title: '实名信息',
+        templateUrl: 'app/student/kyc.popup.html',
+        scope: $scope,
+        cssClass: 'popup-large'
+      });
+    };
+
     $scope.showPhoneAuthPopup = function() {
       if(!$scope.card.cardNo || !$scope.bank.name) {
         utils.alert({content: '请先添加银行卡信息'});
@@ -82,6 +95,9 @@
           params.extRefNo = data.data;
           params.bankCardNo = $scope.card.cardNo;
           params.mobile = $scope.card.phone;
+
+          params.realname = $scope.user.realname;
+          params.idNo = $scope.user.idNo;
 
           $ionicLoading.show();
           MSApi.getPayVcode(params).success(function(data) {
@@ -105,6 +121,11 @@
     $scope.selectBank = function() {
       addCardPopup.close();
       $state.go('banks');
+    };
+
+    // kyc popup
+    $scope.submitKyc = function() {
+      kycPopup.close();
     };
 
     // card popup
