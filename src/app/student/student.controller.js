@@ -181,7 +181,7 @@
   			NonoWebApi.getSchoolList().success(function(data) {
   				if(+data.result === 1) {
   					$scope.schoolList = data.list.map(function(obj) {
-  						return obj.name;
+  						return obj.name || obj;
   					});
 
   					localStorageService.add('schoolList', $scope.schoolList);
